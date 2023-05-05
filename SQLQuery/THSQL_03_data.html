@@ -1,0 +1,658 @@
+<meta charset="utf8" />
+<html>
+
+<head>
+	<style>
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#content {
+			padding: 10px;
+		}
+
+		textarea,
+		select {
+			width: 100%;
+			height: 400px;
+			padding: 12px 20px;
+			margin: 8px 0;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+
+			font-size: 25px;
+		}
+
+		input[type=button] {
+			width: 100%;
+			background-color: #53d462;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 25px;
+		}
+
+		input[type=button]:hover {
+			background-color: #53d462;
+			font-size: 25px;
+		}
+
+		#form {
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			margin: 30px;
+		}
+
+		#divID {
+			border-radius: 5px;
+			background-color: #e3a688;
+			padding: 20px;
+			font-size: 25px;
+		}
+
+		table,
+		td,
+		th {
+			border: 1px solid;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		/* Style the tab */
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+		}
+
+		/* Style the buttons inside the tab */
+		.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+			background-color: #ddd;
+		}
+
+		/* Create an active/current tablink class */
+		.tab button.active {
+			background-color: #ccc;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+
+		.tabactive {
+			background-color: #ddd;
+		}
+
+		#db {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		#db td,
+		#db th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#db tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		#db tr:hover {
+			background-color: #ddd;
+		}
+
+		#db th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #04aaa5;
+			color: white;
+		}
+
+		/* Style the ACCORDION */
+		.accordion {
+			background-color: transparent;
+			color: black;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+		}
+
+		.active,
+		.accordion:hover {
+			background-color: #ccc;
+		}
+
+		.panel {
+			padding: 18px;
+			display: none;
+			background-color: white;
+			overflow: hidden;
+		}
+	</style>
+	<script>
+		function openTab(evt, tabName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablink");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+</head>
+
+<body>
+	<div class="tab">
+		<button class="tablink active" onclick="openTab(event, 'data')">Cơ sở dữ liệu</button>
+		<button class="tablink" onclick="openTab(event, 'cmd')">Lệnh áp dụng</button>
+		<button class="tablink" onclick="openTab(event, 'doc')">Lý thuyết các lệnh</button>
+	</div>
+	<div id="data" class="tabcontent" style="display: block;">
+		<div id="content">
+
+			<h1 style="text-align: center;">Cơ sở dữ liệu thực hiện truy vấn gồm các bảng</h1>
+			<button class="accordion">BẢNG SACH</button>
+			<div class="panel">
+				<table id="db">
+					<tr>
+						<th>MASACH</th>
+						<th>TENSACH</th>
+						<th>MATG</th>
+						<th>MATL</th>
+						<th>MANXB</th>
+						<th>NAMXB</th>
+					</tr>
+					<tr>
+						<td>S01</td>
+						<td>Lập trình cơ bản</td>
+						<td>TG01</td>
+						<td>TL01</td>
+						<td>NXB01</td>
+						<td>2012</td>
+					</tr>
+					<tr>
+						<td>S02</td>
+						<td>Nhà giả kim</td>
+						<td>TG03</td>
+						<td>TL03</td>
+						<td>NXB02</td>
+						<td>2020</td>
+					</tr>
+					<tr>
+						<td>S03</td>
+						<td>Những người hàng xóm</td>
+						<td>TG02</td>
+						<td>TL02</td>
+						<td>NXB03</td>
+						<td>2019</td>
+					</tr>
+					<tr>
+						<td>S04</td>
+						<td>Hoàng tử bé </td>
+						<td>TG05</td>
+						<td>TL02</td>
+						<td>NXB03</td>
+						<td>2018</td>
+					</tr>
+					<tr>
+						<td>S05</td>
+						<td>Kỹ thuật lập trình</td>
+						<td>TG01</td>
+						<td>TL01</td>
+						<td>NXB01</td>
+						<td>2020</td>
+					</tr>
+					<tr>
+						<td>S06</td>
+						<td>Tuổi Trẻ Đáng Giá Bao Nhiêu</td>
+						<td>TG04</td>
+						<td>TL03</td>
+						<td>NXB02</td>
+						<td>2018</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MASACH: Mã sách</li>
+					<li>TENSACH: Tiêu đề sách</li>
+					<li>MATG: Mã tác giả</li>
+					<li>MATL: Mã thể loại</li>
+					<li>MANXB: Mã nhà xuất bản</li>
+					<li>NAMXB: Năm xuất bản</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG NHAXUATBAN</button>
+			<div class="panel">
+				<table id="db">
+					<tr>
+						<th>MANXB</th>
+						<th>TENNXB</th>
+						<th>DIACHI</th>
+					</tr>
+					<tr>
+						<td>NXB01</td>
+						<td>Hồng Đức</td>
+						<td>Hà Nội</td>
+					</tr>
+					<tr>
+						<td>NXB02</td>
+						<td>Nhã Nam</td>
+						<td>Hà Nội</td>
+					</tr>
+					<tr>
+						<td>NXB03</td>
+						<td>Văn học</td>
+						<td>Thành phố Hồ Chí Minh</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MANXB: Mã nhà xuất bản</li>
+					<li>TENNXB: Tên nhà xuất bản</li>
+					<li>DIACHI: Địa chỉ</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG TACGIA</button>
+			<div class="panel">
+
+				<table id="db">
+					<tr>
+						<th>MATACGIA</th>
+						<th>TENTACGIA</th>
+						<th>EMAIL</th>
+					</tr>
+					<tr>
+						<td>TG01</td>
+						<td>Trần Đan Thư</td>
+						<td>danthu@gmail.com</td>
+					</tr>
+					<tr>
+						<td>TG02</td>
+						<td>Nguyễn Nhật Ánh</td>
+						<td>nhatanh@gmail.com</td>
+					</tr>
+					<tr>
+						<td>TG03</td>
+						<td>Paulo Coelho</td>
+						<td>plocoelho@gmail.com</td>
+					</tr>
+					<tr>
+						<td>TG04</td>
+						<td>Rosie Nguyễn</td>
+						<td>ronguyen@gmail.com</td>
+					</tr>
+					<tr>
+						<td>TG05</td>
+						<td>Saint Exupery</td>
+						<td>exupery@gmail.com</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MATACGIA: Mã tác giả</li>
+					<li>TENTACGIA: Tên tác giả</li>
+					<li>EMAIL: Hộp thư</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG THELOAI</button>
+			<div class="panel">
+
+				<table id="db">
+					<tr>
+						<th>MATL</th>
+						<th>TENTL</th>
+					</tr>
+					<tr>
+						<td>TL01</td>
+						<td>Công nghệ</td>
+
+					</tr>
+					<tr>
+						<td>TL02</td>
+						<td>Văn học</td>
+					</tr>
+					<tr>
+						<td>TL03</td>
+						<td>Tự lực</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MATL: Mã thể loại</li>
+					<li>TENTL: Tên thể loại</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG DOCGIA</button>
+			<div class="panel">
+
+				<table id="db">
+					<tr>
+						<th>MADOCGIA</th>
+						<th>TENDOCGIA</th>
+						<th>DIACHI</th>
+						<th>SOTHE</th>
+					</tr>
+					<tr>
+						<td>DG01</td>
+						<td>Lâm Xuân Tiến</td>
+						<td>Nha trang</td>
+						<td>T01</td>
+					</tr>
+					<tr>
+						<td>DG02</td>
+						<td>Ngô Kiến An</td>
+						<td>Nha trang </td>
+						<td>T01</td>
+					</tr>
+					<tr>
+						<td>DG03</td>
+						<td>Huỳnh Nhật Nam</td>
+						<td>Cam ranh</td>
+						<td>T02</td>
+					</tr>
+					<tr>
+						<td>DG04</td>
+						<td>Trần Đình Tuệ</td>
+						<td>Ninh hòa</td>
+						<td>T02</td>
+					</tr>
+					<tr>
+						<td>DG05</td>
+						<td>Bùi Vĩ Hảo</td>
+						<td>Diên khánh</td>
+						<td>T02</td>
+					</tr>
+					<tr>
+						<td>DG06</td>
+						<td>Ngô Mạnh Đạt</td>
+						<td>Ninh hòa</td>
+						<td>T03</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MADOCGIA: Mã độc giả</li>
+					<li>TENDOCGIA: Tên độc giả</li>
+					<li>DIACHI: Địa chỉ</li>
+					<li>SOTHE: Số thẻ thư viện</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG THETHUVIEN</button>
+			<div class="panel">
+
+				<table id="db">
+					<tr>
+						<th>SOTHE</th>
+						<th>NGAYBATDAU</th>
+						<th>NGAYHETHAN</th>
+						<th>GHICHU</th>
+					</tr>
+					<tr>
+						<td>T01</td>
+						<td>01/01/2019</td>
+						<td>01/01/2023</td>
+						<td>Thẻ dùng cho học sinh, sinh viên.</td>
+					</tr>
+					<tr>
+						<td>T02</td>
+						<td>01/01/2020</td>
+						<td>01/01/2025</td>
+						<td>Thẻ dùng cho độc giả nghiên cứu chuyên sâu.</td>
+					</tr>
+					<tr>
+						<td>T03</td>
+						<td>01/01/2020</td>
+						<td>01/01/2023</td>
+						<td>Thẻ dành cho phụ huynh quan tâm chủ đề chăm sóc con cái.</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>SOTHE: Số thẻ thư viện</li>
+					<li>NGAYBATDAU: Ngày mượn</li>
+					<li>NGAYHETHAN: Ngày hết hạn</li>
+					<li>GHICHU: Ghi chú</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG NHANVIEN</button>
+			<div class="panel">
+
+				<table id="db">
+					<tr>
+						<th>MANV</th>
+						<th>TENNV</th>
+						<th>NGAYSINH</th>
+						<th>SODT</th>
+					</tr>
+					<tr>
+						<td>NV01</td>
+						<td>Thúy Kiều</td>
+						<td>03/02/1985</td>
+						<td>0934777555</td>
+					</tr>
+					<tr>
+						<td>NV02</td>
+						<td>Thúy Vân</td>
+						<td>10/07/1979</td>
+						<td>0934777890</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MANV: Mã nhân viên</li>
+					<li>TENNV: Tên nhân viên</li>
+					<li>NGAYSINH: Ngày sinh</li>
+					<li>SODT: Số điện thoại</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG MUON_TRA</button>
+			<div class="panel">
+
+				<table id="db">
+					<tr>
+						<th>MAMUONTRA</th>
+						<th>SOTHE</th>
+						<th>MANV</th>
+						<th>NGAYMUON</th>
+					</tr>
+					<tr>
+						<td>MT01</td>
+						<td>T01</td>
+						<td>NV01</td>
+						<td>07/02/2020</td>
+					</tr>
+					<tr>
+						<td>MT02</td>
+						<td>T01</td>
+						<td>NV01</td>
+						<td>07/05/2021</td>
+					</tr>
+					<tr>
+						<td>MT03</td>
+						<td>T02</td>
+						<td>NV02</td>
+						<td>15/02/2021</td>
+					</tr>
+					<tr>
+						<td>MT04</td>
+						<td>T03</td>
+						<td>NV02</td>
+						<td>04/10/2021</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MAMUONTRA: Mã mượn trả</li>
+					<li>SOTHE: Số thẻ </li>
+					<li>MANV: Mã nhân viên thư viện</li>
+					<li>NGAYMUON: Ngày mượn</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG CT_MUON_TRA</button>
+			<div class="panel">
+
+				<table id="db">
+					<tr>
+						<th>MAMUONTRA</th>
+						<th>MASACH</th>
+						<th>GHICHU</th>
+						<th>DA_TRA</th>
+						<th>NGAYTRA</th>
+					</tr>
+					<tr>
+						<td>MT01</td>
+						<td>S02</td>
+						<td></td>
+						<td>0</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>MT02</td>
+						<td>S06</td>
+						<td></td>
+						<td>0</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>MT03</td>
+						<td>S01</td>
+						<td></td>
+						<td>0</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>MT03</td>
+						<td>S05</td>
+						<td></td>
+						<td>0</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>MT04</td>
+						<td>S03</td>
+						<td></td>
+						<td>0</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>MT04</td>
+						<td>S04</td>
+						<td></td>
+						<td>1</td>
+						<td>05/01/2022</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MAMUONTRA: Mã mượn trả</li>
+					<li>MASACH: Mã sách</li>
+					<li>GHICHU: Ghi chú</li>
+					<li>DA_TRA: Nhận giá trị 0 nếu chưa trả, 1 đã trả</li>
+					<li>NGAYTRA: Khi trường DA_TRA = 1
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div id="cmd" class="tabcontent" style="display:none">
+		<div id="content">
+			<h1 style="text-align: center;">Các lệnh áp dụng</h1>
+			<table id="db">
+				<tr>
+					<td>select</td>
+					<td>distinct</td>
+					<td>where</td>
+					<td>and, or, not</td>
+					<td>in, between, like</td>
+				</tr>
+				<tr>
+					<td>inner join</td>
+					<td>left join</td>
+					<td>right join</td>
+					<td>min</td>
+					<td>max</td>
+				</tr>
+				<tr>
+					<td>sum</td>
+					<td>avg</td>
+					<td>count</td>
+					<td>group by</td>
+					<td>having</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div id="doc" class="tabcontent" style="display:none">
+		<div id="content">
+			<h1 style="text-align: center;">Lý thuyết các lệnh</h1>
+			<ul>
+				<li><a href="CSDL.html">Các lệnh SQL cơ bản</a></li>
+				<li><a href="https://www.w3schools.com/sql/default.asp">Tham khảo về SQL tại W3SCHOOLS</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="center">
+		<h1><a href="THSQL_03.html">Bắt đầu truy vấn ></a></h1>
+	</div>
+	<div class="center">
+		<h1><a href="index.html">Thông tin về công cụ ></a></h1>
+	</div>
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function () {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.display === "block") {
+					panel.style.display = "none";
+				} else {
+					panel.style.display = "block";
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>

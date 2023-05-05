@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      font-size: 25px;
+      box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      height: 300px;
+      /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 style="font-size: 50px;text-align: center;">Truy vấn SQL trực tuyến</h1>
+  <p>Công cụ hỗ trợ người học ngôn ngữ SQL với các ưu điểm:</p>
+  <ul>
+    <li>Giao diện thân thiện trên tất cả các thiết bị.</li>
+    <li>Có thể học thực hành ngôn ngữ truy vấn SQL với bất kỳ thiết bị nào như điện
+      thoại thông minh, máy tính bảng, laptop, máy tính bàn miễn là có kết nối internet.</li>
+    <li>Hỗ trợ có hiệu quả dạy và học trực tuyến, từ xa.</li>
+    <li>Dễ dàng tích hợp đến các tài liệu, giáo trình, bài giảng chuyển đổi số môn học, mô đun có liên quan đến thực
+      hành ngôn ngữ SQL.</li>
+    <li>Hỗ trợ ôn tập thi kết thúc môn, thi tốt nghiệp một cách hiệu quả.</li>
+  </ul>
+  <p>Lựa chọn cơ sở dữ liệu để bắt đầu sử dụng công cụ:</p>
+  <div class="row">
+    <div class="column" style="background-color:#ffcccc;">
+      <h1>Quản Lý Sinh Viên 01</h1>
+      <p>Cơ sở dữ liệu gồm 2 bảng, sử dụng cho người học bước đầu làm quen ngôn ngữ SQL.</p>
+      <p><a href="THSQL_01_data.html">Truy cập cơ sở dữ liệu và truy vấn ></a></p>
+    </div>
+    <div class="column" style="background-color:#ccffdd;">
+      <h1>Quản Lý Sinh Viên 02</h1>
+      <p>Cơ sở dữ liệu gồm 5 bảng, cho phép người học thực hiện các lệnh truy vấn SQL với dữ liệu đa dạng hơn.</p>
+      <p><a href="THSQL_02_data.html">Truy cập cơ sở dữ liệu và truy vấn ></a></p>
+    </div>
+    <div class="column" style="background-color:#cce6ff;">
+      <h1>Quản Lý Thư Viện</h1>
+      <p>Cơ sở dữ liệu gồm 9 bảng, cho phép người học thực hiện truy vấn với dữ liệu đa dạng.</p>
+      <p><a href="THSQL_03_data.html">Truy cập cơ sở dữ liệu và truy vấn ></a></p>
+    </div>
+  </div>
+  <p>&copy; 2023 Trần Ngọc Minh. Liên hệ <a href="https://ngocminhtran.com/contact/">tại đây</a>.</p>
+</body>
+
+</html>

@@ -1,0 +1,265 @@
+<meta charset="utf8" />
+<html>
+
+<head>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="lang.css">
+	<script src="lang.js"></script>
+	<style>
+		#content {
+			border: 10px solid blue;
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		textarea,
+		select {
+			width: 100%;
+			height: 400px;
+			padding: 12px 20px;
+			margin: 8px 0;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+
+			font-size: 25px;
+		}
+
+		input[type=button] {
+			width: 100%;
+			background-color: gray;
+			color: white;
+			font-size: 25px;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		input[type=button]:hover {
+			background-color: black;
+			font-size: 25px;
+		}
+
+		#form {
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			margin: 30px;
+		}
+
+		#divID {
+			border-radius: 5px;
+			background-color: black;
+			color: white;
+			padding: 20px;
+			font-size: 25px;
+		}
+
+		table,
+		td,
+		th {
+			border: 1px solid;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		/* The Modal (background) */
+		.modal {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 1;
+			/* Sit on top */
+			padding-top: 100px;
+			/* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgb(0, 0, 0);
+			/* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+		}
+
+		/* Modal Content */
+		.modal-content {
+			background-color: #fefefe;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #888;
+			border-radius: 10px;
+			width: 80%;
+			font-size: 25px;
+		}
+
+		/* The Close Button */
+		.close {
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js'></script>
+	<script>
+		config = {
+			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
+		}
+
+		function runState01() {
+			// The `initSqlJs` function is globally provided by all of the main dist files if loaded in the browser.
+			// We must specify this locateFile function if we are loading a wasm file from anywhere other than the current html page's folder.
+			initSqlJs(config).then(function (SQL) {
+				//Create the database
+				const db = new SQL.Database();
+				// Run a query without reading the results
+				db.run("DROP TABLE IF EXISTS SINHVIEN;");
+				db.run("CREATE TABLE SINHVIEN (MASV text, HODEM text,TEN text, NGAYSINH date, GIOITINH text, NOISINH float, MALOP text);");
+				// Insert two rows: (1,111) and (2,222)
+				db.run("INSERT INTO SINHVIEN VALUES (?,?,?,?,?,?,?), (?,?,?,?,?,?,?), (?,?,?,?,?,?,?), (?,?,?,?,?,?,?), (?,?,?,?,?,?,?), (?,?,?,?,?,?,?)", ["SV01", "Trần Ngọc", "Minh", '2000-12-15', "Nam", 'Cam Ranh', 'CTT01', "SV02", "Nguyễn Bỉnh", "Khiêm", '1999-09-25', 'Nam', 'Cam Ranh', 'CTT01', "SV03", "Trần Thị", 'Anh', '1999-09-10', 'Nữ', 'Nha Trang', 'CTT02', "SV04", "Đỗ Thị", 'Ái', '2000-03-14', 'Nữ', 'Ninh Hòa', 'CK01', "SV05", "Nguyễn", 'Hà', '1998-06-12', 'Nam', 'Cam Ranh', 'CK01', "SV06", "Hồng Thất", 'Công', '1999-04-02', 'Nam', 'Nha Trang', 'CB01']);
+
+				db.run("DROP TABLE IF EXISTS KHOA;");
+				db.run("CREATE TABLE KHOA(MAKHOA text, TENKHOA text, DIENTHOAI text);");
+				// Insert two rows: (1,111) and (2,222)
+				db.run("INSERT INTO KHOA VALUES (?,?,?), (?,?,?), (?,?,?)", ["KH01", "Công nghệ thông tin", '0334567891', "KH02", "Cơ khí", '0987567853', "KH03", "Cơ bản", '0911223344']);
+
+				db.run("DROP TABLE IF EXISTS LOP;");
+				db.run("CREATE TABLE LOP (MALOP text, TENLOP text,KHOA int, HEDAOTAO text, NAMNHAPHOC int, SISO int, MAKHOA text);");
+				// Insert two rows: (1,111) and (2,222)
+				db.run("INSERT INTO LOP VALUES (?,?,?,?,?,?,?), (?,?,?,?,?,?,?), (?,?,?,?,?,?,?), (?,?,?,?,?,?,?)", ["CTT01", "CNTT 1", 14, 'Chính quy', 2000, 35, 'KH01', "CTT02", "CNTT 2", 15, 'Chính quy', 2000, 30, 'KH01', "CK01", "COKHI 1", 14, 'Chính quy', 2000, 33, 'KH02', "CB01", "COBAN 1", 15, 'Chính quy', 2000, 25, 'KH03']);
+
+				db.run("DROP TABLE IF EXISTS DIEMTHI;");
+				db.run("CREATE TABLE DIEMTHI (MAMONHOC text, MASV text, DIEMLAN1 float, DIEMLAN2 float);");
+				// Insert two rows: (1,111) and (2,222)
+				db.run("INSERT INTO DIEMTHI VALUES (?,?,?,?), (?,?,?,?), (?,?,?,?), (?,?,?,?), (?,?,?,?), (?,?,?,?)", ["MH01", "SV01", 6.5, 8.0, "MH01", "SV02", 5.0, 7.0, "MH02", "SV03", 5.5, 8.0, "MH03", "SV04", 6.5, 7.0, "MH03", "SV05", 5.5, 9.0, "MH04", "SV06", 6.5, 9.0]);
+
+				db.run("DROP TABLE IF EXISTS MONHOC;");
+				db.run("CREATE TABLE MONHOC (MAMONHOC text, TENMONHOC text, SOTIET int);");
+				// Insert two rows: (1,111) and (2,222)
+				db.run("INSERT INTO MONHOC VALUES (?,?,?), (?,?,?), (?,?,?), (?,?,?)", ["MH01", "Cơ sở dữ liệu", 75, "MH02", "Lập trình cơ bản", 90, "MH03", "Vẽ kỹ thuật", 60, "MH04", "Toán cao cấp", 90]);
+				// Prepare a statement
+				// const stmt = db.prepare("SELECT * FROM test WHERE col1 BETWEEN $start AND $end");
+				//const stmt = db.prepare("SELECT col2 FROM test WHERE col1 BETWEEN $start AND $end");	
+				var state1 = document.getElementById("editing").value;
+
+				var input = state1.replace(/‘|’|“|”/g, "'");
+				try {
+					const stmt = db.prepare(input);
+					stmt.getAsObject({ $start: 1, $end: 1 }); // {col1:1, col2:111}
+
+					var div = document.getElementById('divID');
+					div.innerHTML = '';
+					// Bind new values
+					stmt.bind({ $start: 1, $end: 2 });
+					while (stmt.step()) { //
+						const row = stmt.getAsObject();
+						const text = JSON.stringify(row);
+						const ob = JSON.parse(text);
+						for (let r in row)
+							div.innerHTML += row[r] + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+						div.innerHTML += '<br>';
+					}
+				} catch (err) {
+					runState02();
+				}
+			});
+
+			//end runState01
+			return false;
+		}
+		function runState02() {
+
+			//var div = document.getElementById('divID');
+			//div.innerHTML = '<h1 style="color:red;">Có vấn đề gì đó bạn cần xem lại!</h1>';
+			// Get the modal
+			var modal = document.getElementById("myModal");
+
+
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			modal.style.display = "block";
+			// When the user clicks the button, open the modal 
+
+			modal.style.display = "block";
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function () {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+
+			var div = document.getElementById('divID');
+			div.innerHTML = '';
+		}
+
+	</script>
+</head>
+
+<body>
+	<div style="height: 350px;">
+		<textarea placeholder="Nhập lệnh SQL" id="editing" spellcheck="false"
+			oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);"
+			onkeydown="check_tab(this, event);"></textarea>
+		<pre id="highlighting" aria-hidden="true">
+<code class="language-sql" id="highlighting-content">
+</code>
+</pre>
+
+	</div>
+	<div class="center">
+		<form><input id="btn1" onclick="runState01();" type="button" value="Truy vấn"></form>
+	</div>
+	<div id="divID">Kết quả truy vấn</div>
+	<div class="center">
+		<h1><a href="THSQL_02_data.html">Cơ sở dữ liệu và các lệnh ></a></h1>
+	</div>
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Bạn đang gặp phải một vấn đề gì đó nhỉ? Nhấn vào liên kết <a href="THSQL_02_data.html">Cơ sở dữ liệu và
+					các lệnh</a> và kiểm tra:
+			<ul>
+				<li>Tên bảng hay tên các cột. Tham khảo mục <b>Cơ sở dữ liệu</b>.</li>
+				<li>Cú pháp lệnh sử dụng. Tham khảo mục <b>Lý thuyết các lệnh</b>.</li>
+				<li>Lệnh sử dụng được hỗ trợ bởi công cụ. Tham khảo mục <b>Lệnh áp dụng</b>.</li>
+			</ul>
+			</p>
+		</div>
+		<script src="prism.js"></script>
+</body>
+
+</html>

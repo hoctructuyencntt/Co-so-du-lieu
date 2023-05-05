@@ -1,0 +1,512 @@
+<meta charset="utf8" />
+<html>
+
+<head>
+	<style>
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#content {
+			padding: 10px;
+		}
+
+		textarea,
+		select {
+			width: 100%;
+			height: 400px;
+			padding: 12px 20px;
+			margin: 8px 0;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+
+			font-size: 25px;
+		}
+
+		input[type=button] {
+			width: 100%;
+			background-color: #53d462;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 25px;
+		}
+
+		input[type=button]:hover {
+			background-color: #53d462;
+			font-size: 25px;
+		}
+
+		#form {
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			margin: 30px;
+		}
+
+		#divID {
+			border-radius: 5px;
+			background-color: #e3a688;
+			padding: 20px;
+			font-size: 25px;
+		}
+
+		table,
+		td,
+		th {
+			border: 1px solid;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		/* Style the tab */
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+		}
+
+		/* Style the buttons inside the tab */
+		.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+			background-color: #ddd;
+		}
+
+		/* Create an active/current tablink class */
+		.tab button.active {
+			background-color: #ccc;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+
+		.tabactive {
+			background-color: #ddd;
+		}
+
+		#db {
+			font-family: Arial, Helvetica, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		#db td,
+		#db th {
+			border: 1px solid #ddd;
+			padding: 8px;
+		}
+
+		#db tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		#db tr:hover {
+			background-color: #ddd;
+		}
+
+		#db th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			text-align: left;
+			background-color: #04aaa5;
+			color: white;
+		}
+
+		/* Style the ACCORDION */
+		.accordion {
+			background-color: transparent;
+			color: black;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			transition: 0.4s;
+		}
+
+		.active,
+		.accordion:hover {
+			background-color: #ccc;
+		}
+
+		.panel {
+			padding: 18px;
+			display: none;
+			background-color: white;
+			overflow: hidden;
+		}
+	</style>
+	<script>
+		function openTab(evt, tabName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablink");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+</head>
+
+<body>
+	<div class="tab">
+		<button class="tablink active" onclick="openTab(event, 'data')">Cơ sở dữ liệu</button>
+		<button class="tablink" onclick="openTab(event, 'cmd')">Lệnh áp dụng</button>
+		<button class="tablink" onclick="openTab(event, 'doc')">Lý thuyết các lệnh</button>
+	</div>
+	<div id="data" class="tabcontent" style="display: block;">
+		<div id="content">
+			<h1 style="text-align: center;">Cơ sở dữ liệu thực hiện truy vấn gồm các bảng</h1>
+			<button class="accordion">BẢNG SINHVIEN</button>
+			<div class="panel">
+				<table id="db">
+					<tr>
+						<th>MASV</th>
+						<th>HODEM</th>
+						<th>TEN</th>
+						<th>NGAYSINH</th>
+						<th>GIOITINH</th>
+						<th>NOISINH</th>
+						<th>MALOP</th>
+					</tr>
+					<tr>
+						<td>SV01</td>
+						<td>Trần Ngọc</td>
+						<td>Minh</td>
+						<td>15/12/2000</td>
+						<td>Nam</td>
+						<td>Cam Ranh</td>
+						<td>CTT01</td>
+					</tr>
+					<tr>
+						<td>SV02</td>
+						<td>Nguyễn Bỉnh</td>
+						<td>Khiêm</td>
+						<td>25/09/1999</td>
+						<td>Nam</td>
+						<td>Cam Ranh</td>
+						<td>CTT01</td>
+					</tr>
+					<tr>
+						<td>SV03</td>
+						<td>Trần Thị</td>
+						<td>Anh</td>
+						<td>10/09/1999</td>
+						<td>Nữ</td>
+						<td>Nha Trang</td>
+						<td>CTT02</td>
+					</tr>
+					<tr>
+						<td>SV04</td>
+						<td>Đỗ Thị</td>
+						<td>Ái</td>
+						<td>14/03/2000</td>
+						<td>Nữ</td>
+						<td>Ninh Hòa</td>
+						<td>CK01</td>
+					</tr>
+					<tr>
+						<td>SV05</td>
+						<td>Nguyễn</td>
+						<td>Hà</td>
+						<td>12/06/1998</td>
+						<td>Nam</td>
+						<td>Cam Ranh</td>
+						<td>CK01</td>
+					</tr>
+					<tr>
+						<td>SV06</td>
+						<td>Hồng Thất</td>
+						<td>Công</td>
+						<td>02/04/1999</td>
+						<td>Nam</td>
+						<td>Nha Trang</td>
+						<td>CB01</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MASV: Mã sinh viên</li>
+					<li>HODEM: Họ đệm sinh viên</li>
+					<li>TEN: Tên sinh viên</li>
+					<li>NGAYSINH: Ngày tháng năm sinh sinh viên</li>
+					<li>GIOITINH: Giới tính sinh viên (Nam hay Nữ)</li>
+					<li>NOISINH: Nơi sinh sinh viên</li>
+					<li>MALOP: Mã lớp sinh viên đang học</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG KHOA</button>
+			<div class="panel">
+				<table id="db">
+					<tr>
+						<th>MAKHOA</th>
+						<th>TENKHOA</th>
+						<th>DIENTHOAI</th>
+					</tr>
+					<tr>
+						<td>KH01</td>
+						<td>Công nghệ thông tin</td>
+						<td>0334567891</td>
+					</tr>
+					<tr>
+						<td>KH02</td>
+						<td>Cơ khí</td>
+						<td>0987567853</td>
+					</tr>
+					<tr>
+						<td>KH03</td>
+						<td>Cơ bản</td>
+						<td>0911223344</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MAKHOA: Mã khoa</li>
+					<li>TENKHOA: Tên khoa</li>
+					<li>DIENTHOAI: Số điện thoại</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG LOP</button>
+			<div class="panel">
+				<table id="db">
+					<tr>
+						<th>MALOP</th>
+						<th>TENLOP</th>
+						<th>KHOA</th>
+						<th>HEDAOTAO</th>
+						<th>NAMNHAPHOC</th>
+						<th>SISO</th>
+						<th>MAKHOA</th>
+					</tr>
+					<tr>
+						<td>CTT01</td>
+						<td>CNTT 1</td>
+						<td>14</td>
+						<td>Chính quy</td>
+						<td>2000</td>
+						<td>35</td>
+						<td>KH01</td>
+					</tr>
+					<tr>
+						<td>CTT02</td>
+						<td>CNTT 2</td>
+						<td>15</td>
+						<td>Chính quy</td>
+						<td>2000</td>
+						<td>30</td>
+						<td>KH01</td>
+					</tr>
+					<tr>
+						<td>CK01</td>
+						<td>COKHI 1</td>
+						<td>14</td>
+						<td>Chính quy</td>
+						<td>2000</td>
+						<td>33</td>
+						<td>KH02</td>
+					</tr>
+					<tr>
+						<td>CB01</td>
+						<td>COBAN 1</td>
+						<td>15</td>
+						<td>Chính quy</td>
+						<td>2000</td>
+						<td>25</td>
+						<td>KH03</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MALOP: Mã lớp</li>
+					<li>TENLOP: Tên lớp</li>
+					<li>KHOA: Khóa</li>
+					<li>HEDAOTAO: Hệ đào tạo</li>
+					<li>NAMNHAPHOC: Năm nhập học</li>
+					<li>SISO: Sỉ số lớp</li>
+					<li>MAKHOA: Mã khoa</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG DIEMTHI</button>
+			<div class="panel">
+				<table id="db">
+					<tr>
+						<th>MAMONHOC</th>
+						<th>MASV</th>
+						<th>DIEMLAN1</th>
+						<th>DIEMLAN2</th>
+					</tr>
+					<tr>
+						<td>MH01</td>
+						<td>SV01</td>
+						<td>6.5</td>
+						<td>8.0</td>
+					</tr>
+					<tr>
+						<td>MH01</td>
+						<td>SV02</td>
+						<td>5.0</td>
+						<td>7.0</td>
+					</tr>
+					<tr>
+						<td>MH02</td>
+						<td>SV03</td>
+						<td>5.5</td>
+						<td>8.0</td>
+					</tr>
+					<tr>
+						<td>MH03</td>
+						<td>SV04</td>
+						<td>6.5</td>
+						<td>7.0</td>
+					</tr>
+					<tr>
+						<td>MH03</td>
+						<td>SV05</td>
+						<td>5.5</td>
+						<td>9.0</td>
+					</tr>
+					<tr>
+						<td>MH04</td>
+						<td>SV06</td>
+						<td>6.5</td>
+						<td>9.0</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MAMONHOC: Mã môn học</li>
+					<li>MASV: Mã sinh viên</li>
+					<li>DIEMLAN1: Điểm lần 1</li>
+					<li>DIEMLAN2: Điểm lần 2</li>
+				</ul>
+			</div>
+			<button class="accordion">BẢNG MONHOC</button>
+			<div class="panel">
+				<table id="db">
+					<tr>
+						<th>MAMONHOC</th>
+						<th>TENMONHOC</th>
+						<th>SOTIET</th>
+					</tr>
+					<tr>
+						<td>MH01</td>
+						<td>Cơ sở dữ liệu</td>
+						<td>75</td>
+					</tr>
+					<tr>
+						<td>MH02</td>
+						<td>Lập trình cơ bản</td>
+						<td>90</td>
+					</tr>
+					<tr>
+						<td>MH03</td>
+						<td>Vẽ kỹ thuật</td>
+						<td>60</td>
+					</tr>
+					<tr>
+						<td>MH04</td>
+						<td>Toán cao cấp</td>
+						<td>90</td>
+					</tr>
+				</table>
+				<h3>Ý nghĩa các cột:</h3>
+				<ul>
+					<li>MAMONHOC: Mã môn học</li>
+					<li>TENMONHOC: Tên môn học</li>
+					<li>SOTIET: Số tiết</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="cmd" class="tabcontent" style="display:none">
+		<div id="content">
+			<h1 style="text-align: center;">Các lệnh áp dụng</h1>
+			<table id="db">
+				<tr>
+					<td>select</td>
+					<td>distinct</td>
+					<td>where</td>
+					<td>and, or, not</td>
+					<td>in, between, like</td>
+				</tr>
+				<tr>
+					<td>inner join</td>
+					<td>left join</td>
+					<td>right join</td>
+					<td>min</td>
+					<td>max</td>
+				</tr>
+				<tr>
+					<td>sum</td>
+					<td>avg</td>
+					<td>count</td>
+					<td>group by</td>
+					<td>having</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="doc" class="tabcontent" style="display:none">
+		<div id="content">
+			<h1 style="text-align: center;">Lý thuyết các lệnh</h1>
+			<ul>
+				<li><a href="CSDL.html">Các lệnh SQL cơ bản</a></li>
+				<li><a href="https://www.w3schools.com/sql/default.asp">Tham khảo về SQL tại W3SCHOOLS</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="center">
+		<h1><a href="THSQL_03.html">Bắt đầu truy vấn ></a></h1>
+	</div>
+	<div class="center">
+		<h1><a href="index.html">Thông tin về công cụ ></a></h1>
+	</div>
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function () {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.display === "block") {
+					panel.style.display = "none";
+				} else {
+					panel.style.display = "block";
+				}
+			});
+		}
+	</script>
+</body>
+
+</html>
