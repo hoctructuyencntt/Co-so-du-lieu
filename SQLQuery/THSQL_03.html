@@ -171,7 +171,7 @@
 				db.run("DROP TABLE IF EXISTS THETHUVIEN;");
 				db.run("CREATE TABLE THETHUVIEN (SOTHE text, NGAYBATDAU date,NGAYHETHAN date, GHICHU text);");
 				// Insert two rows: (1,111) and (2,222)
-				db.run("INSERT INTO THETHUVIEN VALUES (?,?,?,?), (?,?,?,?), (?,?,?,?)", ["T01", "2019-01-01", "2023-01-01", "Thẻ dùng cho học sinh, sinh viên.", "T02", "2020-01-01", "2025-01-01", "Thẻ dùng cho độc giả nghiên cứu chuyên sâu.", "2020-01-01", "2023-01-01", "Thẻ dành cho phụ huynh quan tâm chủ đề chăm sóc con cái."]);
+				db.run("INSERT INTO THETHUVIEN VALUES (?,?,?,?), (?,?,?,?), (?,?,?,?)", ["T01", "2019-01-01", "2023-01-01", "Thẻ dùng cho học sinh, sinh viên.", "T02", "2020-01-01", "2025-01-01", "Thẻ dùng cho độc giả nghiên cứu chuyên sâu.","T03", "2020-01-01", "2023-01-01", "Thẻ dành cho phụ huynh quan tâm chủ đề chăm sóc con cái."]);
 
 				//NHANVIEN 
 				db.run("DROP TABLE IF EXISTS NHANVIEN;");
